@@ -31,14 +31,15 @@
     $id  = getenv('REQ_PARAMS_id');
     print_r("USER_ID: '$id' \r\n");
 
-    $echo_time = time();
-    $interval = 47*60;
-    while(true){
-            if ($echo_time + $interval >= time()){
-                echo "$interval seconds have passed...";
-                $echo_time = time(); // set up timestamp for next interval
-            }
-        }
+    //Testing Azure timeout value in host
+    $sleep = 7*60;
+    while(true)
+    {
+        # waiting...        
+        sleep($sleep);
+        # work after 420 seconds
+    }
+
     //How to send response, this for JSON Object content type.
     file_put_contents(getenv('res'),print_Json($name,$age,$id));
 ?>
