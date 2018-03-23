@@ -38,12 +38,12 @@ print_r("Printing in console with print_r \r\n");
 
 For Azure Functions you can get environment the data using these variables:
 
-REQ_ORIGINAL_URL
-REQ_METHOD
-REQ_QUERY
-REQ_QUERY_<queryname>
-REQ_HEADERS_<headername>
-REQ_PARAMS_<paramname>
+* REQ_ORIGINAL_URL
+* REQ_METHOD
+* REQ_QUERY
+* REQ_QUERY_<queryname>
+* REQ_HEADERS_<headername>
+* REQ_PARAMS_<paramname>
 
 ```
     $req_original_url = getenv('REQ_ORIGINAL_URL');
