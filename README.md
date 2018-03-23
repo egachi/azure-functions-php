@@ -60,8 +60,9 @@ I have added a route inside function.json
     "route": "users/{id:int?}",
 ```
 
-So I can request my function like this: 
-https://{azurefunctionname}.azurewebsites.net/api/users/{id}?code=/{somerandomcode}&param1=value&param2=value
+This demo is just for GET method, so I can request my function like this:
+[https://{azurefunctionname}.azurewebsites.net/api/users/{id}?code=/{somerandomcode}&param1=value&param2=value]
+
 
 
 ### Some useful references
