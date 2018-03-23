@@ -12,8 +12,8 @@ You can use this repository to deploy to an Azure Function.
 
 You need to create the Azure Function first in portal.
 
-This demo is designed for hosting a function inside App Service Plan because the host.json file has 10 mins of timeout.
-For Consumption Plan you will have just 5 mins. You need to change this value in host.json file.
+This demo is designed for hosting a function inside App Service Plan because the host.json file has not limit for timeout.
+For Consumption Plan you will have 5 mins by default, you can increase it from 1 second to 10 minutes. You need to add this value in host.json file.
 ```
 {
     "functionTimeout" : "00:10:00"
