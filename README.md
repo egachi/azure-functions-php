@@ -1,18 +1,24 @@
 # Azure Function with PHP
 
-This is a sample function for testing
+This is a sample function just for testing. 
+PHP is a language that is in experimental mode for now.
+There is not support for this right now.
 
 ## Getting Started
 
-You can use this github repository to deploy to an azure function
+You can use this repository to deploy to an Azure Function.
 
 ### Prerequisites
 
-You need to create the azure function first in portal.
+You need to create the Azure Function first in portal.
 
-This demo is designed for host inside App Service Plan because host.json has 10 mins of timeout.
-For Consumption Plan you will have just 5 mins.
-
+This demo is designed for hosting a function inside App Service Plan because the host.json file has 10 mins of timeout.
+For Consumption Plan you will have just 5 mins. You need to change this value in host.json file.
+```
+{
+    "functionTimeout" : "00:10:00"
+}
+```
 
 ### Printing data in console
 For printing variables in console, some examples:
@@ -28,56 +34,39 @@ using print_r
 print_r("Printing in console with print_r \r\n");
 ```
 
-## Running the tests
+## Getting data from Environment variables
 
-Explain how to run the automated tests for this system
+For Azure Functions you can get environment the data using these variables:
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+REQ_ORIGINAL_URL
+REQ_METHOD
+REQ_QUERY
+REQ_QUERY_<queryname>
+REQ_HEADERS_<headername>
+REQ_PARAMS_<paramname>
 
 ```
-Give an example
+    $req_original_url = getenv('REQ_ORIGINAL_URL');
+```
+```
+    $id  = getenv('REQ_PARAMS_id');
 ```
 
-## Deployment
+### Route params
 
-Add additional notes about how to deploy this on a live system
+I have added a route inside function.json
 
-## Built With
+```
+    "route": "users/{id:int?}",
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+So I can request my function like this: 
+https://{azurefunctionname}.azurewebsites.net/api/users/{id}?code=/{somerandomcode}&param1=value&param2=value
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+### Some useful references
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* [Http Functions](https://github.com/Azure/azure-functions-host/wiki/Http-Functions) - Azure Function Http Functions
+* [Types of Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale) - Azure Functions scale and hosting
+* [Samples and content](https://github.com/Azure/Azure-Functions/wiki/Samples-and-content) - Wiki
+* [Azure Function On Linux](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-linux-custom-image) - Using a Custom image (Preview)
