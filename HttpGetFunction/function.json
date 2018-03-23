@@ -7,7 +7,7 @@
         "methods": [
           "get"
         ],
-        "route": "/{name:default}/{age:int?}",
+        "route": "products/{id:int?}",
         "authLevel": "function"
       },
       {
