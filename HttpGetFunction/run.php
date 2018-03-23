@@ -32,14 +32,11 @@
     print_r("USER_ID: '$id' \r\n");
 
     //Testing Azure timeout value in host
-    $sleep = 7*60;
-    while(true)
-    {
-        # waiting...        
-        sleep($sleep);
-        # work after 420 seconds
-    }
-
+    $time = 7*60;
+    # waiting...        
+    sleep($time);
+    # work after 420 seconds
+    
     //How to send response, this for JSON Object content type.
     file_put_contents(getenv('res'),print_Json($name,$age,$id));
 ?>
